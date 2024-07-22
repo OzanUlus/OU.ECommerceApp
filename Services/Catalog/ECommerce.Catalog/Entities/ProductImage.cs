@@ -1,8 +1,8 @@
 ﻿namespace ECommerce.Catalog.Entities
 {
-    public class ProductImages
+    public class ProductImage
     {
-        public string ProductImagesId { get; set; }
+        public string ProductImageId { get; set; }
         public string Images1 { get; set; }
         public string Images2 { get; set; }
         public string Images3 { get; set; }
