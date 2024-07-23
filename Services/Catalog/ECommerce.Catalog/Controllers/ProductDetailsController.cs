@@ -1,7 +1,5 @@
 ﻿using ECommerce.Catalog.Dtos.ProductDetailDtos;
 using ECommerce.Catalog.Services.ProductDetailServices;
-using ECommerce.Catalog.Services.ProductDetailServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Catalog.Controllers
