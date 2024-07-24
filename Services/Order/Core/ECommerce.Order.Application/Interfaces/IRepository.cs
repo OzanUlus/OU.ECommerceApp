@@ -11,9 +11,9 @@ namespace ECommerce.Order.Application.Interfaces
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> CreateAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeletAsync(T Entity);
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
         Task<T> GetByFilterAsyns(Expression<Func<T,bool>> filter);
     }
 }
