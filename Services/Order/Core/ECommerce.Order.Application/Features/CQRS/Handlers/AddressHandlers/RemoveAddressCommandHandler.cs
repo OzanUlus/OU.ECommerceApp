@@ -21,7 +21,7 @@ namespace ECommerce.Order.Application.Features.CQRS.Handlers.AddressHandlers
         public async Task Handle(RemoveAddressCommand removeAddressCommand) 
         {
             var value = await _repository.GetByIdAsync(removeAddressCommand.Id);
-            await _repository.DeletAsync(value);
+            await _repository.DeleteAsync(value);
         }
     }
 }
