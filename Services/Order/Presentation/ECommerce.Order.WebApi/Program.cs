@@ -1,9 +1,12 @@
 using ECommerce.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using ECommerce.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
+using ECommerce.Order.Application.Interfaces;
+using ECommerce.Order.Application.Services;
+using ECommerce.Order.Persistance.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+#region CQRS Registiration
 builder.Services.AddScoped<GetAddressQueryHandler>();
 builder.Services.AddScoped<GetAddressByIdQueryHandler>();
 builder.Services.AddScoped<CreateAddressCommandHandler>();
@@ -15,6 +18,12 @@ builder.Services.AddScoped<GetOrderDetailByIdQueryHandler>();
 builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
 builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
 builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
+#endregion
+
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddAplicationService(builder.Configuration);
+
 
 
 builder.Services.AddControllers();
