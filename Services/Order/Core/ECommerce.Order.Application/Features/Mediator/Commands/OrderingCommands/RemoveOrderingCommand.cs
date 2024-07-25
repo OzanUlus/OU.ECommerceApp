@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Order.Application.Features.Mediator.Commands.OrderingCommands
 {
-    public class UpdateOrderingRequest : IRequest
+    public class RemoveOrderingCommand : IRequest
     {
-        public int OrderingId { get; set; }
-        public string UserId { get; set; }
-        public decimal TotalPrice { get; set; }
-        public DateTime OrderDate { get; set; }
+        public int Id { get; set; }
+
+        public RemoveOrderingCommand(int id)
+        {
+            Id = id;
+        }
     }
 }
