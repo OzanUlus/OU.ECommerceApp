@@ -2,6 +2,7 @@ using ECommerce.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using ECommerce.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using ECommerce.Order.Application.Interfaces;
 using ECommerce.Order.Application.Services;
+using ECommerce.Order.Persistance.Context;
 using ECommerce.Order.Persistance.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddAplicationService(builder.Configuration);
+builder.Services.AddDbContext<OrderContext>();
 
 
 
