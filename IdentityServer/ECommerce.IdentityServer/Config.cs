@@ -15,7 +15,8 @@ namespace ECommerce.IdentityServer
         {
          new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
          new ApiResource("ResorceDiscount"){Scopes={"DiscountFullPermission"}},
-         new ApiResource("OrderDiscount"){Scopes={"OrderFullPermission"}}
+         new ApiResource("OrderDiscount"){Scopes={"OrderFullPermission"}},
+         new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
@@ -30,7 +31,8 @@ namespace ECommerce.IdentityServer
          new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
          new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
          new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-         new ApiScope("OrderFullPermission","Full authority for order operations")
+         new ApiScope("OrderFullPermission","Full authority for order operations"),
+         new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
       };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -42,7 +44,7 @@ namespace ECommerce.IdentityServer
                ClientName = "ECommerce Visitor User",
                AllowedGrantTypes = GrantTypes.ClientCredentials,
                ClientSecrets = {new Secret("ecommercesecret".Sha256())},
-               AllowedScopes = { "CatalogReadPermission" }
+               AllowedScopes = { "DiscountFullPermission" }
 
           },
 
