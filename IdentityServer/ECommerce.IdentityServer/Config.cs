@@ -14,7 +14,7 @@ namespace ECommerce.IdentityServer
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
          new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
-         new ApiResource("ResorceDiscount"){Scopes={"DiscountFullPermission"}},
+         new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"}},
          new ApiResource("OrderDiscount"){Scopes={"OrderFullPermission"}},
          new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
