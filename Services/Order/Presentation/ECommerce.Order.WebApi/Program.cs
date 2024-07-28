@@ -4,8 +4,17 @@ using ECommerce.Order.Application.Interfaces;
 using ECommerce.Order.Application.Services;
 using ECommerce.Order.Persistance.Context;
 using ECommerce.Order.Persistance.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceOrder";
+    opt.RequireHttpsMetadata = false;
+});
 
 #region CQRS Registiration
 builder.Services.AddScoped<GetAddressQueryHandler>();

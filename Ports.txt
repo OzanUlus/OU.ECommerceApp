@@ -1,0 +1,4 @@
+5001 : identityserver
+7070 : catalog ms
+7071 : discount ms
+7072 : order ms

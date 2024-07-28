@@ -15,7 +15,7 @@ namespace ECommerce.IdentityServer
         {
          new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
          new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"}},
-         new ApiResource("OrderDiscount"){Scopes={"OrderFullPermission"}},
+         new ApiResource("ResourceOrder"){Scopes={"OrderFullPermission"}},
          new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
