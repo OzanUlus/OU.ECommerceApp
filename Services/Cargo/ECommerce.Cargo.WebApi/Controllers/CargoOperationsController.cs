@@ -34,14 +34,14 @@ namespace ECommerce.Cargo.WebApi.Controllers
                  OperationDate = createCargoOperationDto.OperationDate,
             };
             _cargoOperationService.TInsert(CargoOperation);
-            return Ok("Kargo oparasyon başırıyla oluşturuldu.");
+            return Ok("Kargo işlemi başırıyla oluşturuldu.");
         }
 
         [HttpDelete]
         public IActionResult DeleteCargoOperation(int id)
         {
             _cargoOperationService.TDelete(id);
-            return Ok("Kargo oparasyon başırıyla silindi.");
+            return Ok("Kargo işlemi başırıyla silindi.");
         }
 
         [HttpGet("{id}")]
@@ -63,7 +63,7 @@ namespace ECommerce.Cargo.WebApi.Controllers
 
             };
             _cargoOperationService.TUpdate(CargoOperation);
-            return Ok("Kargo oparasyon başırıyla güncellendi.");
+            return Ok("Kargo işlemi başırıyla güncellendi.");
         }
     }
 }
