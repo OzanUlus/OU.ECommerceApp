@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Cargo.BusinessLayer\ECommerce.Cargo.BusinessLayer.csproj" />
+    <ProjectReference Include="..\ECommerce.Cargo.DataAccessLayer\ECommerce.Cargo.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\ECommerce.Cargo.DtoLayer\ECommerce.Cargo.DtoLayer.csproj" />
+    <ProjectReference Include="..\ECommerce.Cargo.EntityLayer\ECommerce.Cargo.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
