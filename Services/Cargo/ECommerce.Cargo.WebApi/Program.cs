@@ -3,8 +3,16 @@ using ECommerce.Cargo.BusinessLayer.Concrete;
 using ECommerce.Cargo.DataAccessLayer.Abstract;
 using ECommerce.Cargo.DataAccessLayer.Concrete;
 using ECommerce.Cargo.DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceCargo";
+    opt.RequireHttpsMetadata = false;
+});
 
 builder.Services.AddDbContext<CargoContext>();
 
@@ -32,7 +40,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
