@@ -23,10 +23,11 @@ namespace ECommerce.Basket.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMyBasketDetail() 
         {
+            var user = User.Claims;
             var values = await _basketService.GetBasket(_loginService.GetUSerId);
             return Ok(values);
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> SaveMyBasket(BasketTotalDto basketTotalDto)
         {
             basketTotalDto.UserId = _loginService.GetUSerId;
