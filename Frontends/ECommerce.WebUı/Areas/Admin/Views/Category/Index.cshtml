@@ -1,8 +1,47 @@
-﻿
+﻿@model List<ResultCategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
+<section class="content container-fluid">
+    <div class="row">
 
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Kategori Listesi</h4>
+                <p>Kategori ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kategori Adı</th>                         
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var category in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@category.CategoryId</th>
+                                    <td>@category.CategoryName</td>
+                                    <td><a href="/Admin/Category/DeleteCategory/@category.CategoryId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Category/UpdateCategory/@category.CategoryId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a href="/Admin/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
