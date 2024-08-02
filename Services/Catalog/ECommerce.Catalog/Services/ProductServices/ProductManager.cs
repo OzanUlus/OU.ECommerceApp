@@ -10,12 +10,14 @@ namespace ECommerce.Catalog.Services.ProductServices
     {
         private readonly IMongoCollection<Product> _productCollection;
         private readonly IMapper _mapper;
+        private readonly IMongoCollection<Category> _categoryCollection;
 
         public ProductManager(IMapper mapper,IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(databaseSettings.ProductCollectionName);
+            _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
 
@@ -41,6 +43,17 @@ namespace ECommerce.Catalog.Services.ProductServices
         {
             var product = await _productCollection.Find<Product>(p => p.ProductId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDto>(product);
+        }
+
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
+        {
+            var values = await _productCollection.Find(x => true).ToListAsync();
+            foreach (var product in values)
+            {
+                product.Category = await _categoryCollection.Find<Category>(c => c.CategoryId == product.CategoryId).FirstOrDefaultAsync();
+                
+            }
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)

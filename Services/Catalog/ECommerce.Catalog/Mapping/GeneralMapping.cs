@@ -21,6 +21,7 @@ namespace ECommerce.Catalog.Mapping
             CreateMap<Product, CreateProductDto>().ReverseMap();
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             CreateMap<Product, GetByIdProductDto>().ReverseMap();
+            CreateMap<Product, ResultProductsWithCategoryDto>().ReverseMap();
 
 
             CreateMap<ProductDetail, ResultProductDetailDto>().ReverseMap();
