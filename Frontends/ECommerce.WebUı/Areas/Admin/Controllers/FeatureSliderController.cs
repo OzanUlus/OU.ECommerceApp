@@ -1,4 +1,5 @@
 ﻿using ECommerceApp.DtoLayer.CatologDtos.FeatureSliderDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -6,6 +7,8 @@ using System.Text;
 namespace ECommerce.WebUı.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous]
+    [Route("Admin/FeatureSlider")]
     public class FeatureSliderController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -52,7 +55,7 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
             ViewBag.v2 = "Öne Çıkan Görsel";
             ViewBag.v3 = "Yeni Öne Çıkan Görsel Girişi";
             ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
-
+            createFeatureSliderDto.Status = false;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createFeatureSliderDto);
             StringContent stringContent = new(jsonData, Encoding.UTF8, "application/json");
