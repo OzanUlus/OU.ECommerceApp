@@ -1,18 +1,16 @@
-﻿<div class="col-lg-4">
-    <div class="product-offer mb-30" style="height: 200px;">
-        <img class="img-fluid" src="https://media.kit.com/post/HERO-discount-strategies.jpg?fm=webp&q=50&auto=format" alt="">
-        <div class="offer-text">
-            <h6 class="text-white text-uppercase">İNDİRİM 20%</h6>
-            <h3 class="text-white mb-3">Özel Teklifler</h3>
-            <a href="" class="btn btn-primary">Alışverişe Başla</a>
+﻿@model List<ResultSpecialOfferDto>
+<div class="col-lg-4">
+    @foreach (var offer in Model)
+    {
+        <div class="product-offer mb-30" style="height: 200px;">
+            <img class="img-fluid" src="@offer.ImageUrl" alt="">
+            <div class="offer-text">
+                <h6 class="text-white text-uppercase">@offer.Title</h6>
+                <h3 class="text-white mb-3">@offer.Subtitle</h3>
+                <a href="" class="btn btn-primary">Alışverişe Başla</a>
+            </div>
         </div>
-    </div>
-    <div class="product-offer mb-30" style="height: 200px;">
-        <img class="img-fluid" src="https://www.shutterstock.com/image-vector/limited-offer-banner-sale-clock-600nw-1912324219.jpg" alt="">
-        <div class="offer-text">
-            <h6 class="text-white text-uppercase">İNDİRİM 30%</h6>
-            <h3 class="text-white mb-3">Günün Fırsatı</h3>
-            <a href="" class="btn btn-primary">Alışverişe Başla</a>
-        </div>
-    </div>
+    }
+
+
 </div>
