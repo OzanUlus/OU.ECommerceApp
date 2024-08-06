@@ -19,13 +19,13 @@ namespace ECommerce.Catalog.Services.SpecialOfferServices
             _mapper = mapper;
         }
 
-        public async Task CreateCategoryAsync(CreateSpecialOfferDto createSpecialOfferDto)
+        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto)
         {
             var specialOffer = _mapper.Map<SpecialOffer>(createSpecialOfferDto);
             await _specialOfferCollection.InsertOneAsync(specialOffer);
         }
 
-        public async Task DeleteCategoryAsync(string id)
+        public async Task DeleteSpecialOfferAsync(string id)
         {
             await _specialOfferCollection.DeleteOneAsync(so => so.SpecialOfferId == id);
         }
@@ -36,13 +36,13 @@ namespace ECommerce.Catalog.Services.SpecialOfferServices
             return _mapper.Map<List<ResultSpecialOfferDto>>(specialOffers);
         }
 
-        public async Task<GetByIdSpecialOfferDto> GetByIdCategoryAsync(string id)
+        public async Task<GetByIdSpecialOfferDto> GetByIdSpecialOfferAsync(string id)
         {
             var specialOffer = await _specialOfferCollection.Find(so => so.SpecialOfferId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdSpecialOfferDto>(specialOffer);
         }
 
-        public async Task UpdateCategoryAsync(UpdateSpecialOfferDto updateSpecialOfferDto)
+        public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
             var specialOffer = _mapper.Map<SpecialOffer>(updateSpecialOfferDto);
             await _specialOfferCollection.FindOneAndReplaceAsync(so => so.SpecialOfferId == updateSpecialOfferDto.SpecialOfferId, specialOffer);

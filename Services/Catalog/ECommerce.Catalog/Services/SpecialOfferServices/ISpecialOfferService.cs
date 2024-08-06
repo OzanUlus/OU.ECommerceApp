@@ -5,9 +5,9 @@ namespace ECommerce.Catalog.Services.SpecialOfferServices
     public interface ISpecialOfferService
     {
         Task<List<ResultSpecialOfferDto>> GetAllAsync();
-        Task CreateCategoryAsync(CreateSpecialOfferDto createSpecialOfferDto );
-        Task UpdateCategoryAsync(UpdateSpecialOfferDto updateSpecialOfferDto);
-        Task DeleteCategoryAsync(string id);
-        Task<GetByIdSpecialOfferDto> GetByIdCategoryAsync(string id);
+        Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto );
+        Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpecialOfferDto);
+        Task DeleteSpecialOfferAsync(string id);
+        Task<GetByIdSpecialOfferDto> GetByIdSpecialOfferAsync(string id);
     }
 }
