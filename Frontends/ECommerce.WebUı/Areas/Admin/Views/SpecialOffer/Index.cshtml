@@ -1,0 +1,50 @@
+﻿@model List<ResultSpecialOfferDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Özel Teklifler Listesi</h4>
+                <p>Özel Teklifler ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              
+                                <th>Başlık</th>
+                                <th>Alt Başlık</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var offer in Model)
+                            {
+                               
+                                <tr>
+                                   
+                                    <td>@offer.Title</td>
+                                    <td>@offer.Subtitle</td>
+                                    <td><a asp-area="Admin" asp-controller="SpecialOffer" asp-action="DeleteSpecialOffer" asp-route-id="@offer.SpecialOfferId" class="btn btn-danger">Sil</a></td>
+                                    <td><a asp-area="Admin" asp-controller="SpecialOffer" asp-action="UpdateSpecialOffer" asp-route-id="@offer.SpecialOfferId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a asp-area="Admin" asp-controller="SpecialOffer" asp-action="CreateSpecialOffer"  class="btn btn-primary">Yeni Özel Teklifler Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
