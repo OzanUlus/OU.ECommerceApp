@@ -1,0 +1,52 @@
+﻿@model List<ResultSpecialDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Özel Fırsatlar Listesi</h4>
+                <p>Özel Fırsatlar ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Alt Başlık</th>
+                                <th>Görsel</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sd in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@sd.Title</td>
+                                    <td>@sd.Subtitle</td>
+                                    <td> <img src="@sd.ImageUrl" style="height:100px; width:100px;" /> </td>
+                                    <td><a  asp-area="Admin" asp-controller="SpecialDiscount" asp-action="DeleteSpecialDiscount" asp-route-id="@sd.SpecialDiscountId" class="btn btn-danger">Sil</a></td>
+                                    <td><a  asp-area="Admin" asp-controller="SpecialDiscount" asp-action="UpdateSpecialDiscount" asp-route-id="@sd.SpecialDiscountId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a asp-area="Admin" asp-controller="SpecialDiscount" asp-action="CreateSpecialDiscount" class="btn btn-primary">Yeni Özel Fırsatlar Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
