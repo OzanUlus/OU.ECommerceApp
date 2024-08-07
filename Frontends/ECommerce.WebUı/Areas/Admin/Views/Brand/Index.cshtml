@@ -1,0 +1,51 @@
+﻿@model List<ResultBrandDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Markalar Listesi</h4>
+                <p>Markalar  ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Marka Adı</th>
+                                <th>Görsel</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var brand in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@brand.BrandName</td>
+                                    <td> <img src="@brand.ImageUrl" style="height 75px; width:75px;" /> </td>
+                                    <td><a asp-area="Admin" asp-controller="Brand" asp-action="DeleteBrand" asp-route-id="@brand.BrandId" class="btn btn-danger">Sil</a></td>
+                                    <td><a asp-area="Admin" asp-controller="Brand" asp-action="UpdateBrand" asp-route-id="@brand.BrandId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a asp-area="Admin" asp-controller="Brand" asp-action="CreateBrand" class="btn btn-primary">Yeni Marka Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
