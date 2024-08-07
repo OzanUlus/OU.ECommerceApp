@@ -6,6 +6,7 @@ using ECommerce.Catalog.Dtos.ProductDetailDtos;
 using ECommerce.Catalog.Dtos.ProductDtos;
 using ECommerce.Catalog.Dtos.ProductImageDtos;
 using ECommerce.Catalog.Dtos.SpecailOfferDtos;
+using ECommerce.Catalog.Dtos.SpecialDiscountDtos;
 using ECommerce.Catalog.Entities;
 
 namespace ECommerce.Catalog.Mapping
@@ -56,6 +57,12 @@ namespace ECommerce.Catalog.Mapping
             CreateMap<Feature, CreateFeatureDto>().ReverseMap();
             CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
             CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
+
+
+            CreateMap<SpecialDiscount, ResultSpecialDiscountDto>().ReverseMap();
+            CreateMap<SpecialDiscount, CreateSpecialDiscountDto>().ReverseMap();
+            CreateMap<SpecialDiscount, UpdateSpecialDiscountDto>().ReverseMap();
+            CreateMap<SpecialDiscount, GetByIdSpecialDiscountDto>().ReverseMap();
 
         }
     }
