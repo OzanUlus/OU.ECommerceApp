@@ -38,18 +38,27 @@ namespace ECommerce.Catalog.Controllers
             return Ok(response);
         }
 
+        [HttpGet("ProductListWithCategoryByCategoryId")]
+        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string categoryId)
+        {
+            var response = await _productService.GetProductsWithCategoryByCategoryIdAsync(categoryId);
+            return Ok(response);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
             await _productService.CreateProductAsync(createProductDto);
             return Ok("Ürün başarı ile eklendi");
         }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             await _productService.DeleteProductAsync(id);
             return Ok("Ürün başarı ile silindi");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {

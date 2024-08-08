@@ -1,0 +1,59 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Hakkımda Listesi</h4>
+                <p>Hakkımda  ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                           
+                                <th>Açıklama</th>
+                                <th>Adres</th>
+                                <th>Mail</th>
+                                <th>Telefon</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var about in Model)
+                            {
+                                
+                                <tr>
+
+                                    <td>@about.Description</td>
+                                    <td>@about.Address</td>
+                                    <td>@about.Mail</td>
+                                    <td>@about.Phone</td>
+                                    <td><a asp-area="Admin" asp-controller="About" asp-action="DeleteAbout" asp-route-id="@about.AboutId" class="btn btn-danger">Sil</a></td>
+                                    <td><a asp-area="Admin" asp-controller="About" asp-action="UpdateAbout" asp-route-id="@about.AboutId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a asp-area="Admin" asp-controller="About" asp-action="CreateAbout" class="btn btn-primary">Yeni Hakkımda Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
