@@ -56,5 +56,12 @@ namespace ECommerce.Comment.Controllers
             _commentContext.SaveChanges();
             return Ok("Yorum başarı ile güncellendi");
         }
+
+        [HttpGet("CommentListByProductId")]
+        public IActionResult CommentListByProductId(string id)
+        {
+            var values = _commentContext.UserComments.Where(c => c.ProductId ==id).ToList();
+            return Ok(values);
+        }
     }
 }

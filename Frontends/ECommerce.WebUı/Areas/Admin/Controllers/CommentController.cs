@@ -75,6 +75,7 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
         [Route("UpdateComment/{id}")]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)
         {
+            updateCommentDto.Status = true;
 
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCommentDto);
