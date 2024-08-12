@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceApp.DtoLayer.CommentDtos
 {
-    public class ResultCommentDto
+    public class UpdateCommentDto
     {
         public int UserCommentId { get; set; }
         public string NameSurname { get; set; }
