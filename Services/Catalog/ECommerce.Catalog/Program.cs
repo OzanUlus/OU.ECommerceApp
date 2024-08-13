@@ -1,6 +1,7 @@
 using ECommerce.Catalog.Services.AboutServices;
 using ECommerce.Catalog.Services.BrandsServices;
 using ECommerce.Catalog.Services.CategoryServices;
+using ECommerce.Catalog.Services.ContactServices;
 using ECommerce.Catalog.Services.FeatureServices;
 using ECommerce.Catalog.Services.FeatureSliderServices;
 using ECommerce.Catalog.Services.ProductDetailServices;
@@ -34,6 +35,7 @@ builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<ISpecialDiscountService, SpecialDiscountManager>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IContactService, ContactManager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

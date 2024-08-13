@@ -2,6 +2,7 @@
 using ECommerce.Catalog.Dtos.AboutDtos;
 using ECommerce.Catalog.Dtos.BrandDtos;
 using ECommerce.Catalog.Dtos.CategoryDtos;
+using ECommerce.Catalog.Dtos.ContactDtos;
 using ECommerce.Catalog.Dtos.FeatureDtos;
 using ECommerce.Catalog.Dtos.FeatureSliderDtos;
 using ECommerce.Catalog.Dtos.ProductDetailDtos;
@@ -77,6 +78,13 @@ namespace ECommerce.Catalog.Mapping
             CreateMap<About, CreateAboutDto>().ReverseMap();
             CreateMap<About, UpdateAboutDto>().ReverseMap();
             CreateMap<About, GetByIdAboutDto>().ReverseMap();
+
+
+
+            CreateMap<Contact, ResultContactDto>().ReverseMap();
+            CreateMap<Contact, CreateContactDto>().ReverseMap();
+            CreateMap<Contact, UpdateContactDto>().ReverseMap();
+            CreateMap<Contact, GetByIdContactDto>().ReverseMap();
 
 
         }
