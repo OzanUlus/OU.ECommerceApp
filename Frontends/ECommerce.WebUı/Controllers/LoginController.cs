@@ -56,7 +56,7 @@ namespace ECommerce.WebUı.Controllers
                         };
 
                         await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        return RedirectToAction("Index", "Default");
+                        return RedirectToAction("Index","Default");
                     }
                 }
 

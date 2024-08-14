@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginDto
 @{
     Layout = null;
 }
@@ -30,16 +30,16 @@
                     <a asp-action="Index" asp-controller="Register" class="account">Kayıt Ol</a>
                 </div>
             </div>
-            <form class="form-detail" asp-action="Index" asp-controller="Register" method="post">
+            <form class="form-detail" asp-action="Index" asp-controller="Login" method="post">
                 <h2>Kullanıcı Giriş Formu</h2>
 
                 <div class="form-row">
                     <label for="your_email">Kullanıcı Adınız</label>
-                    <input type="text"  id="your_username" class="input-text" required>
+                    <input type="text"  id="your_username" asp-for="Username" class="input-text" required>
                 </div>
                 <div class="form-row">
                     <label for="your_email">Şifreniz</label>
-                    <input type="password"  id="your_password" class="input-text" required>
+                    <input type="password"  id="your_password" asp-for="Password" class="input-text" required>
                 </div>
                 <button class="register">Giriş Yap</button>
             </form>
