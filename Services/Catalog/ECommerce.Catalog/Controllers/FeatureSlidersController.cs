@@ -8,7 +8,7 @@ namespace ECommerce.Catalog.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize]
     public class FeatureSlidersController : ControllerBase
     {
         private readonly IFeatureSliderService _featureSliderService;

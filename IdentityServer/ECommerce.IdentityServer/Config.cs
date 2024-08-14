@@ -48,7 +48,7 @@ namespace ECommerce.IdentityServer
                ClientName = "ECommerce Visitor User",
                AllowedGrantTypes = GrantTypes.ClientCredentials,
                ClientSecrets = {new Secret("ecommercesecret".Sha256())},
-               AllowedScopes = { "DiscountFullPermission" }
+               AllowedScopes = { "DiscountFullPermission", "CatalogReadPermission", "CatalogFullPermission" }
 
           },
 
@@ -59,7 +59,7 @@ namespace ECommerce.IdentityServer
                ClientName = "ECommerce Manager User",
                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                ClientSecrets = {new Secret("ecommercesecret".Sha256())},
-               AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission" }
+               AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission" }
 
           },
 
