@@ -1,6 +1,10 @@
+5000 : Ocelot
 5001 : identityserver
 7070 : catalog ms
 7071 : discount ms
 7072 : order ms
 7073 : cargo ms
 7074 : basket ms
+7075 : comment ms
+7076 : payment ms
+7077 : ýmages ms
