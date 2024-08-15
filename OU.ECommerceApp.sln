@@ -64,6 +64,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{6373
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Comment", "Services\Comment\ECommerce.Comment\ECommerce.Comment.csproj", "{DDB96BCD-9118-4089-95D4-01ACD98EF601}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{8F803AE2-0F72-4F98-9329-1E6177115899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{1B6CACD7-2F11-45CA-9E5A-6AB339907DB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.OcelotGateway", "ApiGateway\ECommerce.OcelotGateway\ECommerce.OcelotGateway.csproj", "{AB39BD53-7084-4936-9041-61D00DEF4DEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -134,6 +140,10 @@ Global
 		{DDB96BCD-9118-4089-95D4-01ACD98EF601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB96BCD-9118-4089-95D4-01ACD98EF601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB96BCD-9118-4089-95D4-01ACD98EF601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB39BD53-7084-4936-9041-61D00DEF4DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB39BD53-7084-4936-9041-61D00DEF4DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB39BD53-7084-4936-9041-61D00DEF4DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB39BD53-7084-4936-9041-61D00DEF4DEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +174,7 @@ Global
 		{3FE94FED-3CDF-4974-8A12-FDB65CF6F5E0} = {8B037977-D1B8-45F8-823F-0ECF8B61CC2C}
 		{63737449-A76B-4A47-8C43-AD2B8A1D2FE0} = {9C4E25A0-A9F4-4057-8F97-0AA9C0D384E7}
 		{DDB96BCD-9118-4089-95D4-01ACD98EF601} = {63737449-A76B-4A47-8C43-AD2B8A1D2FE0}
+		{AB39BD53-7084-4936-9041-61D00DEF4DEC} = {8F803AE2-0F72-4F98-9329-1E6177115899}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E171CB53-6977-4E6B-943D-7E5D5FCBA39B}
