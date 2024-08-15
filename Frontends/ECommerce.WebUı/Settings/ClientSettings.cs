@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.WebUı.Settings
 {
-    public class ClientSetting
+    public class ClientSettings
     {
         public Client ECommerceVisitorClient { get; set; }
         public Client ECommerceManagerClient { get; set; }

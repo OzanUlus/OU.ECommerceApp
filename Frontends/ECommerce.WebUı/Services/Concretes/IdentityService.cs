@@ -14,16 +14,16 @@ namespace ECommerce.WebUı.Services.Concretes
     {
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _contextAccessor;
-        private readonly ClientSetting _clientSetting;
+        private readonly ClientSettings _clientSetting;
 
-        public IdentityService(HttpClient httpClient, IHttpContextAccessor contextAccessor, IOptions<ClientSetting> clientSetting)
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor contextAccessor, IOptions<ClientSettings> clientSetting)
         {
             _httpClient = httpClient;
             _contextAccessor = contextAccessor;
             _clientSetting = clientSetting.Value;
         }
 
-        public async Task<bool> SignIn(SignUpDto signUpDto)
+        public async Task<bool> SignIn(SignInDto signInDto)
         {
             var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest 
             {
@@ -38,8 +38,8 @@ namespace ECommerce.WebUı.Services.Concretes
             {
                 ClientId = _clientSetting.ECommerceManagerClient.ClientId,
                 ClientSecret = _clientSetting.ECommerceManagerClient.ClientSecret,
-                UserName = signUpDto.Username,
-                Password = signUpDto.Password,
+                UserName = signInDto.Username,
+                Password = signInDto.Password,
                 Address = discoveryEndPoint.TokenEndpoint
 
             };
@@ -80,6 +80,10 @@ namespace ECommerce.WebUı.Services.Concretes
             });
 
             authenticationProperties.IsPersistent = false;
+
+            await _contextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,claimsPrincipal,authenticationProperties);
+
+            return true;
         }
     }
 }
