@@ -39,6 +39,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("CleintSettings"));
 
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
