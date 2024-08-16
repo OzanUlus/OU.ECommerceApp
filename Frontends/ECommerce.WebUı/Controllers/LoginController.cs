@@ -46,7 +46,7 @@ namespace ECommerce.WebUı.Controllers
             signInDto.Password = "Password12*";
             await _identityService.SignIn(signInDto);
 
-            return RedirectToAction("Index","Test");
+            return RedirectToAction("Index","User");
         }
     }
 }
