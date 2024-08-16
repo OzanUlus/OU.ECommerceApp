@@ -1,4 +1,5 @@
 using ECommerce.WebUý.Handlers;
+using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
 using ECommerce.WebUý.Services.Concretes;
 using ECommerce.WebUý.Services.Interfaces;
 using ECommerce.WebUý.Settings;
@@ -31,6 +32,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
 builder.Services.AddHttpContextAccessor();
+
+
+
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddHttpClient<IIdentityService , IdentityService>();
 
@@ -47,6 +51,11 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+});
 
 
 
