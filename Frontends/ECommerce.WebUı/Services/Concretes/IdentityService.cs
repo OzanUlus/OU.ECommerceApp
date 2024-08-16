@@ -15,19 +15,21 @@ namespace ECommerce.WebUı.Services.Concretes
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ClientSettings _clientSetting;
+        private readonly ServiceApiSettings _serviceApiSettings;
 
-        public IdentityService(HttpClient httpClient, IHttpContextAccessor contextAccessor, IOptions<ClientSettings> clientSetting)
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor contextAccessor, IOptions<ClientSettings> clientSetting,        IOptions<ServiceApiSettings> serviceApiSettings)
         {
             _httpClient = httpClient;
             _contextAccessor = contextAccessor;
             _clientSetting = clientSetting.Value;
+            _serviceApiSettings = serviceApiSettings.Value;
         }
 
         public async Task<bool> SignIn(SignInDto signInDto)
         {
             var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest 
             {
-             Address="http://localhost:5001",
+             Address = _serviceApiSettings.IdentityServerUrl,
              Policy = new DiscoveryPolicy 
              {
                RequireHttps = false,
