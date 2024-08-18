@@ -1,5 +1,7 @@
 using ECommerce.WebUý.Handlers;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
+using ECommerce.WebUý.Services.CatalogServices.ProductServices;
+using ECommerce.WebUý.Services.CatalogServices.SpecialOfferService;
 using ECommerce.WebUý.Services.Concretes;
 using ECommerce.WebUý.Services.Interfaces;
 using ECommerce.WebUý.Settings;
@@ -58,6 +60,16 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();

@@ -1,4 +1,5 @@
-﻿using ECommerceApp.DtoLayer.CatologDtos.SpecialOfferDtos;
+﻿using ECommerce.WebUı.Services.CatalogServices.SpecialOfferService;
+using ECommerceApp.DtoLayer.CatologDtos.SpecialOfferDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,11 +12,11 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
     [Route("Admin/SpecialOffer")]
     public class SpecialOfferController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ISpecialOfferService _specialOfferService;
 
-        public SpecialOfferController(IHttpClientFactory httpClientFactory)
+        public SpecialOfferController(ISpecialOfferService specialOfferService)
         {
-            _httpClientFactory = httpClientFactory;
+            _specialOfferService = specialOfferService;
         }
 
         [Route("Index")]
@@ -26,15 +27,10 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
             ViewBag.v3 = "Özel Teklifler Listesi";
             ViewBag.v0 = "Özel Teklifler İşlemleri";
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/SpecialOffers");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultSpecialOfferDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+            var values = await _specialOfferService.GetAllAsync();
+
+            return View(values);
+
         }
 
         [HttpGet]
@@ -57,25 +53,20 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
             ViewBag.v3 = "Yeni Özel Teklifler Girişi";
             ViewBag.v0 = "Özel Teklifler İşlemleri";
 
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createSpecialOfferDto);
-            StringContent stringContent = new(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7070/api/SpecialOffers", stringContent);
+            await _specialOfferService.CreateSpecialOfferAsync(createSpecialOfferDto);
 
-            if (responseMessage.IsSuccessStatusCode) return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
+             return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
 
-            return View();
+            
         }
 
         [Route("DeleteSpecialOffer/{id}")]
         public async Task<IActionResult> DeleteSpecialOffer(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7070/api/SpecialOffers?id=" + id);
+            await _specialOfferService.DeleteSpecialOfferAsync(id);
+             return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
 
-            if (responseMessage.IsSuccessStatusCode) return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
-
-            return View();
+           
         }
 
         [HttpGet]
@@ -89,30 +80,21 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
             ViewBag.v3 = "Özel Teklifler Güncelleme";
             ViewBag.v0 = "Özel Teklifler İşlemleri";
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/SpecialOffers/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateSpecialOfferDto>(jsonData);
-                return View(values);
-            }
-            return View();
+            var value = await _specialOfferService.GetByIdSpecialOfferAsync(id);
+          
+                return View(value);
+            
+            
         }
 
         [HttpPost]
         [Route("UpdateSpecialOffer/{id}")]
-        public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto )
+        public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
+            await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
+             return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
 
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateSpecialOfferDto);
-            StringContent stringContent = new(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7070/api/SpecialOffers", stringContent);
-
-            if (responseMessage.IsSuccessStatusCode) return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
-
-            return View();
+            
         }
     }
 }
