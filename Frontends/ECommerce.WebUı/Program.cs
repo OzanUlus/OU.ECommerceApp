@@ -1,4 +1,5 @@
 using ECommerce.WebUý.Handlers;
+using ECommerce.WebUý.Services.CatalogServices.AboutService;
 using ECommerce.WebUý.Services.CatalogServices.BrandService;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
 using ECommerce.WebUý.Services.CatalogServices.FeatureService;
