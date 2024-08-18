@@ -27,7 +27,7 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
             ViewBag.v0 = "Hakkımda İşlemleri";
 
 
-            var values = _aboutService.GetAllAsync();
+            var values = await _aboutService.GetAllAsync();
             return View(values);
 
         }
