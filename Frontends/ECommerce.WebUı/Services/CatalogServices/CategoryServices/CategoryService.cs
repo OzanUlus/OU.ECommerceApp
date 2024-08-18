@@ -1,4 +1,5 @@
 ﻿using ECommerceApp.DtoLayer.CatologDtos.CategoryDtos;
+using Newtonsoft.Json;
 
 namespace ECommerce.WebUı.Services.CatalogServices.CategoryServices
 {
@@ -25,14 +26,15 @@ namespace ECommerce.WebUı.Services.CatalogServices.CategoryServices
         public async Task<List<ResultCategoryDto>> GetAllAsync()
         {
             var responseMessage = await _httpClient.GetAsync("categories");
-            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             return values;
         }
 
-        public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
+        public async Task<UpdateCategoryDto> GetByIdCategoryAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync("categories/"+id);
-            var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
+            var value = await responseMessage.Content.ReadFromJsonAsync<UpdateCategoryDto>();
             return value;
         }
 
