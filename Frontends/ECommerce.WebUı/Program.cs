@@ -1,5 +1,6 @@
 using ECommerce.WebUý.Handlers;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
+using ECommerce.WebUý.Services.CatalogServices.FeatureSliderService;
 using ECommerce.WebUý.Services.CatalogServices.ProductServices;
 using ECommerce.WebUý.Services.CatalogServices.SpecialOfferService;
 using ECommerce.WebUý.Services.Concretes;
@@ -70,6 +71,12 @@ builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();
 
 builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+
+builder.Services.AddHttpClient<IFeatureSliderService, FeatureSliderService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();
