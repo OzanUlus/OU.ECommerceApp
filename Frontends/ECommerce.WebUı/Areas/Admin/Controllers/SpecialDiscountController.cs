@@ -9,7 +9,7 @@ namespace ECommerce.WebUı.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-    [AllowAnonymous]
+
     [Route("Admin/SpecialDiscount")]
     public class SpecialDiscountController : Controller
     {

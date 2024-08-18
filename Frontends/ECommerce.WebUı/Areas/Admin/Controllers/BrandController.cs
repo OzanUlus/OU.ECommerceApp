@@ -8,7 +8,6 @@ using System.Text;
 namespace ECommerce.WebUı.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
     [Route("Admin/Brand")]
     public class BrandController : Controller
     {
