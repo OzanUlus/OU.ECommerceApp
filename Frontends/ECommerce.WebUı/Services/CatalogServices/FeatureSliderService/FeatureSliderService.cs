@@ -23,6 +23,16 @@ namespace ECommerce.WebUı.Services.CatalogServices.FeatureSliderService
             await _httpClient.DeleteAsync("featuresliders?id=" + id);
         }
 
+        public Task FeatureSliderChangeStatusFalse(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task FeatureSliderChangeStatusTrue(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<ResultFeatureSliderDto>> GetAllAsync()
         {
             var responseMessage = await _httpClient.GetAsync("featuresliders");

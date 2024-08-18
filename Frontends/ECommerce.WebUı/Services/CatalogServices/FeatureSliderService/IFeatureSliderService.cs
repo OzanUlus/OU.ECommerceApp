@@ -9,5 +9,7 @@ namespace ECommerce.WebUı.Services.CatalogServices.FeatureSliderService
         Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto updateFeatureSliderDto);
         Task DeleteFeatureSliderAsync(string id);
         Task<UpdateFeatureSliderDto> GetByIdFeatureSliderAsync(string id);
+        Task FeatureSliderChangeStatusTrue(string id);
+        Task FeatureSliderChangeStatusFalse(string id);
     }
 }
