@@ -2,6 +2,7 @@ using ECommerce.WebUý.Handlers;
 using ECommerce.WebUý.Services.CatalogServices.AboutService;
 using ECommerce.WebUý.Services.CatalogServices.BrandService;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
+using ECommerce.WebUý.Services.CatalogServices.ContactServices;
 using ECommerce.WebUý.Services.CatalogServices.FeatureService;
 using ECommerce.WebUý.Services.CatalogServices.FeatureSliderService;
 using ECommerce.WebUý.Services.CatalogServices.ProductDetailService;
@@ -9,6 +10,7 @@ using ECommerce.WebUý.Services.CatalogServices.ProductImageServices;
 using ECommerce.WebUý.Services.CatalogServices.ProductServices;
 using ECommerce.WebUý.Services.CatalogServices.SpecialDiscountService;
 using ECommerce.WebUý.Services.CatalogServices.SpecialOfferService;
+using ECommerce.WebUý.Services.CommentServices;
 using ECommerce.WebUý.Services.Concretes;
 using ECommerce.WebUý.Services.Interfaces;
 using ECommerce.WebUý.Settings;
@@ -113,6 +115,16 @@ builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();

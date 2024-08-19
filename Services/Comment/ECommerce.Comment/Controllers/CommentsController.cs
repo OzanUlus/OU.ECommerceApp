@@ -8,7 +8,7 @@ namespace ECommerce.Comment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize]
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _commentContext;
@@ -57,7 +57,7 @@ namespace ECommerce.Comment.Controllers
             return Ok("Yorum başarı ile güncellendi");
         }
 
-        [HttpGet("CommentListByProductId")]
+        [HttpGet("CommentListByProductId/{id}")]
         public IActionResult CommentListByProductId(string id)
         {
             var values = _commentContext.UserComments.Where(c => c.ProductId ==id).ToList();

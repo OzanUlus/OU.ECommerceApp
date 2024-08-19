@@ -1,4 +1,5 @@
-﻿using EECommerceApp.DtoLayer.CatologDtos.ContactDtos;
+﻿using ECommerce.WebUı.Services.CatalogServices.ContactServices;
+using EECommerceApp.DtoLayer.CatologDtos.ContactDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -7,11 +8,11 @@ namespace ECommerce.WebUı.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+       private readonly IContactService _contactService;
 
-        public ContactController(IHttpClientFactory httpClientFactory)
+        public ContactController(IContactService contactService)
         {
-            _httpClientFactory = httpClientFactory;
+            _contactService = contactService;
         }
 
         [HttpGet]
@@ -24,17 +25,13 @@ namespace ECommerce.WebUı.Controllers
         public async Task<IActionResult> Index(CreateContactDto createContactDto)
         {
 
-
             createContactDto.IsRead = false;
             createContactDto.SendDate = DateTime.Now;
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createContactDto);
-            StringContent stringContent = new(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7070/api/Contacts", stringContent);
+            await _contactService.CreateContactAsync(createContactDto);
 
-            if (responseMessage.IsSuccessStatusCode) return RedirectToAction("Index", "Default");
+            return RedirectToAction("Index", "Default");
 
-            return View();
+            
         }
     }
 }
