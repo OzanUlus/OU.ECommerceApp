@@ -1,4 +1,5 @@
-﻿using ECommerceApp.DtoLayer.CatologDtos.PrdouctDtos;
+﻿using ECommerce.WebUı.Services.CatalogServices.ProductServices;
+using ECommerceApp.DtoLayer.CatologDtos.PrdouctDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -7,27 +8,18 @@ namespace ECommerce.WebUı.ViewComponents.DefaultViewComponents
     public class _FeatureProductDefaultComponentPartial : ViewComponent
     {
 
-        private readonly IHttpClientFactory _httpClientFactory;
+       private readonly IProductService _productService;
 
-        public _FeatureProductDefaultComponentPartial(IHttpClientFactory httpClientFactory)
+        public _FeatureProductDefaultComponentPartial(IProductService productService)
         {
-            _httpClientFactory = httpClientFactory;
+            _productService = productService;
         }
-
-      
 
         public async Task<IViewComponentResult> InvokeAsync() 
         {
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+          var values = await _productService.GetAllAsync();
+            return View(values);
         }
     }
 }
