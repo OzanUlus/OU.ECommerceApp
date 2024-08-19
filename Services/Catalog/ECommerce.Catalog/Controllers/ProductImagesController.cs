@@ -31,7 +31,7 @@ namespace ECommerce.Catalog.Controllers
             var response = await _productImageService.GetByIdProductImageAsync(id);
             return Ok(response);
         }
-        [HttpGet("ProductImagesByProductId")]
+        [HttpGet("ProductImagesByProductId/{id}")]
         public async Task<IActionResult> ProductImagesByProductId(string id)
         {
             var response = await _productImageService.GetByProductIdProductImageAsync(id);

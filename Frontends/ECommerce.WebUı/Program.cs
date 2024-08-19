@@ -4,6 +4,8 @@ using ECommerce.WebUý.Services.CatalogServices.BrandService;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
 using ECommerce.WebUý.Services.CatalogServices.FeatureService;
 using ECommerce.WebUý.Services.CatalogServices.FeatureSliderService;
+using ECommerce.WebUý.Services.CatalogServices.ProductDetailService;
+using ECommerce.WebUý.Services.CatalogServices.ProductImageServices;
 using ECommerce.WebUý.Services.CatalogServices.ProductServices;
 using ECommerce.WebUý.Services.CatalogServices.SpecialDiscountService;
 using ECommerce.WebUý.Services.CatalogServices.SpecialOfferService;
@@ -101,6 +103,16 @@ builder.Services.AddHttpClient<IBrandService, BrandService>(opt =>
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();
 
 builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
+}).AddHttpMessageHandler<ClientCredantialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");
 }).AddHttpMessageHandler<ClientCredantialTokenHandler>();
