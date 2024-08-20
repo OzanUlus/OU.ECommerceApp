@@ -1,4 +1,5 @@
 using ECommerce.WebUý.Handlers;
+using ECommerce.WebUý.Services.BasketServices;
 using ECommerce.WebUý.Services.CatalogServices.AboutService;
 using ECommerce.WebUý.Services.CatalogServices.BrandService;
 using ECommerce.WebUý.Services.CatalogServices.CategoryServices;
@@ -66,6 +67,11 @@ var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceA
 builder.Services.AddHttpClient<IUserService, UserService>(opt => 
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
