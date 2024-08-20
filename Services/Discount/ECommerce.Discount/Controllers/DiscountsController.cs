@@ -32,6 +32,13 @@ namespace ECommerce.Discount.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetCodeDetailByCodeAsync")]
+        public async Task<IActionResult> GetCodeDetailByCodeAsync(string code)
+        {
+            var response = await _discountService.GetCodeDetailByCodeAsync(code);
+            return Ok(response);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateDiscountCoupon(CreateCouponDto createCouponDto)
         {

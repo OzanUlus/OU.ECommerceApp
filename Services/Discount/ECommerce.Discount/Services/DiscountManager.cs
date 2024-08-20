@@ -62,6 +62,18 @@ namespace ECommerce.Discount.Services
             }
         }
 
+        public async Task<ResultCouponDto> GetCodeDetailByCodeAsync(string code)
+        {
+            string query = "Select * From Coupons where Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+            using (var connection = _discountDapperContext.CreateConnection())
+            {
+                var coupon = await connection.QueryFirstOrDefaultAsync<ResultCouponDto>(query, parameters);
+                return coupon;
+            }
+        }
+
         public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
         {
             string query = "Update Coupons Set Code=@code,Rate=@rate,IsActive=@isActive,ValidDate=@validDate where CouponId=@couponId";

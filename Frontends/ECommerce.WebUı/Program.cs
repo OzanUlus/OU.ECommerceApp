@@ -13,6 +13,7 @@ using ECommerce.WebUý.Services.CatalogServices.SpecialDiscountService;
 using ECommerce.WebUý.Services.CatalogServices.SpecialOfferService;
 using ECommerce.WebUý.Services.CommentServices;
 using ECommerce.WebUý.Services.Concretes;
+using ECommerce.WebUý.Services.DiscountServices;
 using ECommerce.WebUý.Services.Interfaces;
 using ECommerce.WebUý.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -72,6 +73,11 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
