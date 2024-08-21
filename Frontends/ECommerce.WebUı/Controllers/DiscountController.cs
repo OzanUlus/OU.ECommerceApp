@@ -25,9 +25,13 @@ namespace ECommerce.WebUı.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmDiscountCoupon(string code)
         {
-            
             var values = await _discountService.GetDiscountCode(code);
-            return View(values);
+            var basketValues = await _basketService.GetBasket();
+            var totalPriceWithTax = basketValues.TotalPrice + basketValues.TotalPrice / 100 * 10;
+            var discountPrice = totalPriceWithTax / 100 * values.Rate;
+        
+
+            return RedirectToAction("Index","ShopingCart", new {code = code,discountPrice =discountPrice});
         }
     }
 }

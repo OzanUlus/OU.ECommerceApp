@@ -18,14 +18,18 @@ namespace ECommerce.WebUı.Controllers
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string code,decimal discountPrice)
         {
+            ViewBag.Code = code;
             var values = await _basketService.GetBasket();
             ViewBag.total = values.TotalPrice;
-            var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
-            ViewBag.taxTotal = totalPriceWithTax;
             var tax = values.TotalPrice / 100 * 10;
+            var totalPriceWithTax = values.TotalPrice + tax;
+            ViewBag.totalPriceWithTax = totalPriceWithTax;
             ViewBag.tax = tax;
+            ViewBag.discountPrice = discountPrice;
+            var lastTotal = totalPriceWithTax - discountPrice;
+            ViewBag.lastTotal = lastTotal;
             return View();
         }
 
