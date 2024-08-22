@@ -1,4 +1,5 @@
 ﻿using ECommerceApp.DtoLayer.OrderDtos.OrderingDtos;
+using Newtonsoft.Json;
 
 namespace ECommerce.WebUı.Services.OrderServices.OrderOrderingServices
 {
@@ -12,8 +13,9 @@ namespace ECommerce.WebUı.Services.OrderServices.OrderOrderingServices
         }
         public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserId(string id)
         {
-            var responseMessage = await _httpClient.GetAsync("orders/GetOrderingByUserId?id="+id);
-            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultOrderingByUserIdDto>>();
+            var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingByUserId/{id}");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultOrderingByUserIdDto>>(jsonData);
             return values;
         }
     }
