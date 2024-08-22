@@ -32,6 +32,7 @@ builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IOrderingRepository), typeof(OrderingRepository));
 builder.Services.AddAplicationService(builder.Configuration);
 builder.Services.AddDbContext<OrderContext>();
 
