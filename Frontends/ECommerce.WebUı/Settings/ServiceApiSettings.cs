@@ -12,6 +12,7 @@
         public SerViceApi Basket { get; set; }
         public SerViceApi Comment { get; set; }
         public SerViceApi Payment { get; set; }
+        public SerViceApi Message { get; set; }
     }
 
     public class SerViceApi 
