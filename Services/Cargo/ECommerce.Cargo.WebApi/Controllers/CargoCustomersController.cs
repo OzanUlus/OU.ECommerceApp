@@ -37,7 +37,8 @@ namespace ECommerce.Cargo.WebApi.Controllers
                 Email = createCargoCustomerDto.Email,
                 Name = createCargoCustomerDto.Name,
                 PhoneNumber = createCargoCustomerDto.PhoneNumber,
-                Surname = createCargoCustomerDto.Surname
+                Surname = createCargoCustomerDto.Surname,
+                UserCustomerId = createCargoCustomerDto.UserCustomerId,
             };
             _customerService.TInsert(CargoCustomer);
             return Ok("Kargo müşterisi başırıyla oluşturuldu.");
@@ -69,11 +70,19 @@ namespace ECommerce.Cargo.WebApi.Controllers
                 Email = updateCargoCustomerDto.Email,
                 Name = updateCargoCustomerDto.Name,
                 PhoneNumber = updateCargoCustomerDto.PhoneNumber,
-                Surname = updateCargoCustomerDto.Surname
+                Surname = updateCargoCustomerDto.Surname,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId,
 
             };
             _customerService.TUpdate(CargoCustomer);
             return Ok("Kargo müşterisi başırıyla güncellendi.");
+        }
+
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            var values = _customerService.TGetCargoCustomerByCustomerId(id);
+            return Ok(values);
         }
     }
 }

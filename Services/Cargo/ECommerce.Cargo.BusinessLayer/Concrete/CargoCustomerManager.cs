@@ -33,6 +33,11 @@ namespace ECommerce.Cargo.BusinessLayer.Concrete
            return _cargoCustomerDal.GetById(id);
         }
 
+        public CargoCustomer TGetCargoCustomerByCustomerId(string id)
+        {
+            return _cargoCustomerDal.GetCargoCustomerByCustomerId(id);
+        }
+
         public void TInsert(CargoCustomer entity)
         {
            _cargoCustomerDal.Insert(entity);
