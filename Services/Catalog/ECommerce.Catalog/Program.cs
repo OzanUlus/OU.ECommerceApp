@@ -9,6 +9,7 @@ using ECommerce.Catalog.Services.ProductImageServices;
 using ECommerce.Catalog.Services.ProductServices;
 using ECommerce.Catalog.Services.SpecialDiscountServices;
 using ECommerce.Catalog.Services.SpecialOfferServices;
+using ECommerce.Catalog.Services.StatisticServices;
 using ECommerce.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -36,6 +37,7 @@ builder.Services.AddScoped<ISpecialDiscountService, SpecialDiscountManager>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IContactService, ContactManager>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
