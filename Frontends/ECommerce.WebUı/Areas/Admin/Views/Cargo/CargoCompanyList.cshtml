@@ -1,0 +1,49 @@
+﻿@model List<ResultCargoCompantDto>
+@{
+    ViewData["Title"] = "CargoCompanyList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Kargo Şirketi Listesi</h4>
+                <p>Kargo Şirketi ile ilgili işlemrinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz. </p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kargo Şirketi Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cc in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@cc.CargoCompanyName</td>
+                                    <td><a asp-area="Admin" asp-controller="Cargo" asp-action="DeleteCargoCompany" asp-route-id="@cc.CargoCompanyId" class="btn btn-danger">Sil</a></td>
+                                    <td><a asp-area="Admin" asp-controller="Cargo" asp-action="UpdateCargoCompany" asp-route-id="@cc.CargoCompanyId" class="btn btn-warning">Güncelle</a></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <td><a asp-area="Admin" asp-controller="Cargo" asp-action="CreateCargoCompany" class="btn btn-primary">Yeni Kargo Firması Ekle</a></td>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

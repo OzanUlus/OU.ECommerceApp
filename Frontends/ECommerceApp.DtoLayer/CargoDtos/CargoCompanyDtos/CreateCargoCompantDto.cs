@@ -9,6 +9,6 @@ namespace ECommerceApp.DtoLayer.CargoDtos.CargoCompanyDtos
     public class CreateCargoCompantDto
     {
       
-        public int CargoCompanyName { get; set; }
+        public string CargoCompanyName { get; set; }
     }
 }
