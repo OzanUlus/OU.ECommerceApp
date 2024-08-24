@@ -21,16 +21,46 @@ namespace ECommerce.Catalog.Services.StatisticServices
             _brandCollection = database.GetCollection<Brand>(databaseSettings.BrandCollectionName);
         }
 
-        public  long GetBrandCount()
+        public async Task<long> GetBrandCount()
         {
-            var values = _brandCollection.CountDocuments(FilterDefinition<Brand>.Empty);
+            var values = await _brandCollection.CountDocumentsAsync(FilterDefinition<Brand>.Empty);
             return values;
         }
 
-        public long GetCategoryCount()
+        public async Task<long> GetCategoryCount()
         {
-            var values = _categoryCollection.CountDocuments(FilterDefinition<Category>.Empty);
+            var values = await _categoryCollection.CountDocumentsAsync(FilterDefinition<Category>.Empty);
             return values;
+        }
+
+        public async Task<string> GetMaxPriceProductName()
+        {
+            var filter = Builders<Product>.Filter.Empty;
+            var sort = Builders<Product>.Sort.Descending(p => p.ProductPrice);
+            var projection = Builders<Product>.Projection.Include(p => 
+                                               p.ProductName).Exclude("ProductId");
+
+            var product = await _productCollection.Find(filter)
+                                                  .Sort(sort)
+                                                  .Project(projection)
+                                                  .FirstOrDefaultAsync();
+
+            return product.GetValue("ProductName").AsString;
+        }
+
+        public async Task<string> GetMinPriceProductName()
+        {
+            var filter = Builders<Product>.Filter.Empty;
+            var sort = Builders<Product>.Sort.Ascending(p => p.ProductPrice);
+            var projection = Builders<Product>.Projection.Include(p =>
+                                               p.ProductName).Exclude("ProductId");
+
+            var product = await _productCollection.Find(filter)
+                                                  .Sort(sort)
+                                                  .Project(projection)
+                                                  .FirstOrDefaultAsync();
+
+            return product.GetValue("ProductName").AsString;
         }
 
         public async Task<decimal> GetProductAvgPrice()
@@ -48,9 +78,9 @@ namespace ECommerce.Catalog.Services.StatisticServices
             return value;
         }
 
-        public long GetProductCount()
+        public async Task<long> GetProductCount()
         {
-            var values = _productCollection.CountDocuments(FilterDefinition<Product>.Empty);
+            var values = await _productCollection.CountDocumentsAsync(FilterDefinition<Product>.Empty);
             return values;
         }
     }

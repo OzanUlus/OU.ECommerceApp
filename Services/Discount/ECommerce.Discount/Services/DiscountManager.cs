@@ -74,6 +74,17 @@ namespace ECommerce.Discount.Services
             }
         }
 
+        public async Task<int> GetDiscountCouponCount()
+        {
+            string query = "Select Count(*) From Coupons";
+            using (var connection = _discountDapperContext.CreateConnection())
+            {
+                var count = await connection.QueryFirstOrDefaultAsync<int>(query);
+                return count;
+
+            }
+        }
+
         public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
         {
             string query = "Update Coupons Set Code=@code,Rate=@rate,IsActive=@isActive,ValidDate=@validDate where CouponId=@couponId";

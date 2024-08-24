@@ -23,6 +23,11 @@ namespace ECommerce.Discount.Controllers
         {
           var response = await _discountService.GetAllCouponAsync();
             return Ok(response);
+        } [HttpGet("GetDiscountCouponCount")]
+        public async Task<IActionResult> GetDiscountCouponCount() 
+        {
+          var response = await _discountService.GetDiscountCouponCount();
+            return Ok(response);
         }
 
         [HttpGet("{id}")]

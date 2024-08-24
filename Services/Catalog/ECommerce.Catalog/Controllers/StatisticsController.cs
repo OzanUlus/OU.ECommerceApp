@@ -16,30 +16,44 @@ namespace ECommerce.Catalog.Controllers
         }
 
         [HttpGet("GetBrandCount")]
-        public IActionResult GetBrandCount() 
+        public async Task<IActionResult> GetBrandCount() 
         {
-           var value =  _statisticService.GetBrandCount();
+           var value = await _statisticService.GetBrandCount();
             return Ok(value);
         }
 
         [HttpGet("GetCategoryCount")]
-        public IActionResult GetCategoryCount()
+         public async Task<IActionResult> GetCategoryCount()
         {
-            var value = _statisticService.GetCategoryCount();
+            var value = await _statisticService.GetCategoryCount();
             return Ok(value);
         }
 
         [HttpGet("GetProductCount")]
-        public IActionResult GetProductCount()
+        public async Task<IActionResult> GetProductCount()
         {
-            var value = _statisticService.GetProductCount();
+            var value = await _statisticService.GetProductCount();
             return Ok(value);
         }
 
         [HttpGet("GetProductAvgPrice")]
-        public IActionResult GetProductAvgPrice()
+        public async Task<IActionResult> GetProductAvgPrice()
         {
-            var value = _statisticService.GetProductAvgPrice();
+            var value = await _statisticService.GetProductAvgPrice();
+            return Ok(value);
+        }
+
+        [HttpGet("GetMaxPriceProductName")]
+        public async Task<IActionResult> GetMaxPriceProductName()
+        {
+            var value = await _statisticService.GetMaxPriceProductName();
+            return Ok(value);
+        }
+        
+        [HttpGet("GetMinPriceProductName")]
+        public async Task<IActionResult> GetMinPriceProductName()
+        {
+            var value = await _statisticService.GetMinPriceProductName();
             return Ok(value);
         }
     }
