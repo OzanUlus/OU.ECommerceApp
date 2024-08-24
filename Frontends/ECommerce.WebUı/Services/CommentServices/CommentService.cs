@@ -31,6 +31,13 @@ namespace ECommerce.WebUı.Services.CommentServices
             await _httpClient.DeleteAsync("Comments?id=" + id);
         }
 
+        public async Task<int> GetActiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("Comments/getactivecomment");
+            var value = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return value;
+        }
+
         public async Task<List<ResultCommentDto>> GetAllAsync()
         {
             var responseMessage = await _httpClient.GetAsync("Comments");
@@ -43,6 +50,20 @@ namespace ECommerce.WebUı.Services.CommentServices
         {
             var responseMessage = await _httpClient.GetAsync("Comments/" + id);
             var value = await responseMessage.Content.ReadFromJsonAsync<UpdateCommentDto>();
+            return value;
+        }
+
+        public async Task<int> GetPassiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("Comments/getpassivecomment");
+            var value = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return value;
+        }
+
+        public async Task<int> GetTotalCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("Comments/gettotalcomment");
+            var value = await responseMessage.Content.ReadFromJsonAsync<int>();
             return value;
         }
 
