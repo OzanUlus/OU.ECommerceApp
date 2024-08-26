@@ -85,7 +85,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Message", "Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalR", "SignalR", "{EC11C8ED-E85F-46F3-962C-1FF8F5F28C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.SignalRApi", "Services\SignalR\ECommerce.SignalRApi\ECommerce.SignalRApi.csproj", "{54247B90-7F93-4503-942D-C23477489B3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.SignalRApi", "Services\SignalR\ECommerce.SignalRApi\ECommerce.SignalRApi.csproj", "{54247B90-7F93-4503-942D-C23477489B3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.RapidApi", "RapidApi\ECommerce.RapidApi\ECommerce.RapidApi.csproj", "{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{54247B90-7F93-4503-942D-C23477489B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54247B90-7F93-4503-942D-C23477489B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54247B90-7F93-4503-942D-C23477489B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -216,6 +222,7 @@ Global
 		{FBD3DA61-6300-4C1E-ABD2-123648561257} = {548D51A0-95C9-4C69-9E24-2A38FF584883}
 		{EC11C8ED-E85F-46F3-962C-1FF8F5F28C2E} = {9C4E25A0-A9F4-4057-8F97-0AA9C0D384E7}
 		{54247B90-7F93-4503-942D-C23477489B3E} = {EC11C8ED-E85F-46F3-962C-1FF8F5F28C2E}
+		{B49E507E-7FB9-4A72-BCC8-81EE6D869ADB} = {1B6CACD7-2F11-45CA-9E5A-6AB339907DB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E171CB53-6977-4E6B-943D-7E5D5FCBA39B}
