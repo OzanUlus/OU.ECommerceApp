@@ -73,6 +73,13 @@ namespace ECommerce.Message.Controllers
             var values = await _messageService.GetByIdMessageAsync(id);
             return Ok(values);
         }
+        
+        [HttpGet("GetTotalMessageCountByRecieverIdAsync")]
+        public async Task<IActionResult> GetTotalMessageCountByRecieverIdAsync(string id)
+        {
+            var values = await _messageService.GetTotalMessageCountByRecieverIdAsync(id);
+            return Ok(values);
+        }
 
     }
 }

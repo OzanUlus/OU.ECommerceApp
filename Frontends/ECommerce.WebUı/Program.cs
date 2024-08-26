@@ -136,6 +136,7 @@ builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt 
 
 
 
+
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catolog.Path}");

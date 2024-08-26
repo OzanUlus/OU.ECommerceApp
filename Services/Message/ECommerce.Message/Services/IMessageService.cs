@@ -13,6 +13,7 @@ namespace ECommerce.Message.Services
         Task<GetByIdMessageDto> GetByIdMessageAsync(int id);
 
         Task<int> GetTotalMessageCountCountAsync();
+        Task<int> GetTotalMessageCountByRecieverIdAsync(string id);
         
     }
 }

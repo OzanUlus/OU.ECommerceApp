@@ -24,6 +24,13 @@ namespace ECommerce.WebUı.Services.MeesageServices
             var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultSendboxDto>>();
             return values;
         }
+
+        public async Task<int> GetTotalMessageCountByRecieverIdAsync(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("UserMessages/GetTotalMessageCountByRecieverIdAsync?id="+id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
         //http://localhost:7078/api/UserMessages/GetSendboxMessage?id=q
     }
 }
